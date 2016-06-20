@@ -5,11 +5,14 @@ public class GameController : MonoBehaviour {
     // Game Lives Variables
     public int PortalLives = 20;
 
+    //cannon fire sound variable
+    public AudioSource cannonsound;
+
     //cannon variables
     public GameObject Cannonball;
     public GameObject Barrelend;
     public float firecountdown = 1;
-    public float canfire = 0;
+    private float canfire = 0f;
     
     //spawn variables
     public GameObject Enemy;
@@ -64,18 +67,31 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        firecannon();
+        //firecannon();
         SpawnerTimer();
 	}
 
-    private void firecannon() {
-        if (Input.GetKey("space")&& Time.time > canfire)
+   // public void firecannon() {
+     //   if (Input.GetKey("space")&& Time.time > canfire)
+     //   {
+     //       GameObject firedball;
+     //       firedball = Instantiate(Cannonball, Barrelend.transform.position, Barrelend.transform.rotation)as GameObject;
+     //       firedball.GetComponent<Rigidbody>().AddForce(Barrelend.transform.forward *700);
+            // cannon sound
+     //       cannonsound.Play();           
+     //       canfire = Time.time + firecountdown;
+      //  }
+   // }
+    public void firecannonbutton()
+    {
+        if (canfire < Time.time)
         {
             GameObject firedball;
-            firedball = Instantiate(Cannonball, Barrelend.transform.position, Barrelend.transform.rotation)as GameObject;
-            firedball.GetComponent<Rigidbody>().AddForce(Barrelend.transform.forward *700);
-           
-           canfire = Time.time + firecountdown;
+            firedball = Instantiate(Cannonball, Barrelend.transform.position, Barrelend.transform.rotation) as GameObject;
+            firedball.GetComponent<Rigidbody>().AddForce(Barrelend.transform.forward * 700);
+            // cannon sound
+            cannonsound.Play();
+            canfire = Time.time + firecountdown;
         }
     }
 }
