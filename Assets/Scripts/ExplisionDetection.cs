@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ExplisionDetection : MonoBehaviour {
     public GameObject Explosion;
-
+    
 	// Use this for initialization
 	void Start () {
 	
@@ -11,7 +11,7 @@ public class ExplisionDetection : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
     //detect if the cannon ball has hit the floor
     void OnTriggerEnter(Collider other)
