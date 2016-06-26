@@ -33,7 +33,8 @@ public class GameController : MonoBehaviour {
     public AudioClip oww5;
     private AudioClip Emptysound;
 
-    //cannon variables
+    //cannon variables and tracer
+    public GameObject tracerball;
     public GameObject Cannonball;
     public GameObject Barrelend;
     public float firecountdown = 1;
@@ -130,6 +131,7 @@ public class GameController : MonoBehaviour {
         SpawnerTimer();
         Gametime();
         spawnincreser();
+        TARGETRECT();
     }
 
     //as the time diminishes spawn more enemys making the game harder as time goes on
@@ -209,5 +211,16 @@ public class GameController : MonoBehaviour {
         canfire = Time.time + firecountdown;
         }
     }
-    
+    public void TARGETRECT()
+    {
+        //this sets the power of the turret by using the slider
+        float Power = powerbar.value * 7;
+        //checks to see if the cooldown is met and the space is pressed
+            GameObject tracer;
+            //instantiates the cannonball and adds force depending on the slider
+            tracer = Instantiate(tracerball, Barrelend.transform.position, Barrelend.transform.rotation) as GameObject;
+            tracer.GetComponent<Rigidbody>().AddForce(Barrelend.transform.forward * Power);
+    }
 }
+
+

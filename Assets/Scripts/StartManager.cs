@@ -19,4 +19,10 @@ public class StartManager : MonoBehaviour {
     {
         SceneManager.LoadScene(1);
     }
+    public void resetbutton()
+    {
+        PlayerPrefs.SetInt("highscore", 0);
+        currenthighscore = PlayerPrefs.GetInt("highscore");
+        highscore.text = "High Score: " + currenthighscore.ToString();
+    }
 }
