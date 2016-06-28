@@ -86,12 +86,7 @@ public class GameController : MonoBehaviour {
 
         if (time <= 0)
         {
-            //if time has gotten to zero and score is higher than current highscore then set new highscore
-            if (score > currenthighscore)
-            {
-                PlayerPrefs.SetInt("highscore", score);
-            }
-            //if the player has won but the high score is less than previous
+            //when player wins the game 
             PlayerPrefs.SetInt("endingscore", score);
             PlayerPrefs.SetInt("won", 1);
             SceneManager.LoadScene(2);

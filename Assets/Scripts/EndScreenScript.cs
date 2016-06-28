@@ -36,9 +36,10 @@ public class EndScreenScript : MonoBehaviour {
             {
                 endingresult.text = "You Defended the horde and set a new highscore";
                 endingscore.text = "Score: "+score.ToString();
+                PlayerPrefs.SetInt("highscore", score);
             }
 
-            if (score <= highscore)
+            else if (score <= highscore)
             {
                 endingresult.text = "You Defended But didnt get a new high score";
                 endingscore.text = "Score: "+score.ToString();
