@@ -26,13 +26,14 @@ public class Target : MonoBehaviour {
     public void Targetrecticle()
     {
         
-        float firerad = Barrel.transform.rotation.y;
+        // not having any luck sorry david i did play with it for a bit. i also made the target a trigger to stop the ball contacting it.
+        float firerad = Barrel.transform.localRotation.y;
         float launchangle = 2 * firerad;
         float velocity = FiringVel.value;
         float velocity2 = velocity * velocity;
         float sin = Mathf.Sin(launchangle);
         float calc1 = velocity2 * sin;
-        float MaxDistance = (calc1 / gravity) / 2000;
+        float MaxDistance = (calc1 / gravity)/1000;
         Debug.Log("max distance is " + MaxDistance);
         transform.localPosition = new Vector3(0, 0, MaxDistance);
         

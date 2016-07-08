@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour {
     //pause variable
     bool ispaused = false;
 
+    //message variable
+    public GameObject messagepic;
+
     // Ui Variables
     public Text Score_UITEXT;
     public Text Time_UITEXT;
@@ -119,9 +122,17 @@ public class GameController : MonoBehaviour {
             SceneManager.LoadScene(2);
         }
     }
-	
+    //function to remove the begining message pic
+    public void messagepicfunction()
+    {
+        if (time < 296)
+            //show the message then take it off after 4 seconds
+            messagepic.SetActive(false);
+    }
+
 	// Update is called once per frame
 	void Update () {
+        messagepicfunction();
         firecannon();
         SpawnerTimer();
         Gametime();
@@ -133,17 +144,17 @@ public class GameController : MonoBehaviour {
     private void spawnincreser()
     {
         if (time > 250)
-            SpawnInterval = 3;
+            SpawnInterval = 3f;
         if (time > 200 && time <= 250)
             SpawnInterval = 2.5f;
         if (time > 150 && time <= 200)
             SpawnInterval = 2.0f;
         if (time > 100 && time <= 150)
-            SpawnInterval = 1.5f;
+            SpawnInterval = 1.3f;
         if (time > 50 && time <= 100)
-            SpawnInterval = 1f;
+            SpawnInterval = 0.8f;
         if (time > 0 && time <= 50)
-            SpawnInterval = 0.5f;
+            SpawnInterval = 0.3f;
     }
 
     //sound function
@@ -160,7 +171,7 @@ public class GameController : MonoBehaviour {
             Emptysound = oww4;
         if (soundtoplay == 5)
             Emptysound = oww5;
-        AudioSource.PlayClipAtPoint(Emptysound, transform.position, 0.5f);
+        AudioSource.PlayClipAtPoint(Emptysound, transform.position, 1f);
     }
 
     //score function
